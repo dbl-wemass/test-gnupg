@@ -1,4 +1,9 @@
 #!/bin/bash
+issudo=$(id -u)
+if [ "$issudo" -ne 0 ]
+  then echo "Ejecuta como sudo"
+  exit
+fi
 source ./config
 currentUser="${user}"
 i=0
