@@ -26,4 +26,4 @@ prueba diferentes combinaciones de encriptacion y desencriptacion
 
 archivo encritptado con todas las claves
 archivo encriptado con varias claves (1/3 claves)
-intentos aleatorios de desencriptado
+archivo cifrado con AES256 (segun los comentarios de jose maria) para ver la diferencia del peso
