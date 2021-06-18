@@ -20,10 +20,10 @@ while :; do
   #caracteristicas del keyring
   cat >$gnupgDir/keydetails <<E1
 %echo Generating a basic OpenPGP key
-Key-Type: RSA
-Key-Length: 2048
-Subkey-Type: RSA
-Subkey-Length: 2048
+Key-Type: ECDSA
+Key-Curve: nistp256
+Subkey-Type: ECDH
+Subkey-Curve: nistp256
 Name-Real: $currentUser Calrissian
 Name-Comment: comment $currentUser
 Name-Email: $currentUser@l1.com
@@ -41,7 +41,6 @@ E1
   #echo "confiando en ella"
   sudo -u $currentUser gpg2 --command-fd 0 --expert --edit-key $currentUser trust <<<$'5\ny\n' 
   if [ "$currentUser" != "$user" ]; then
-    echo "miname is $currentUser"
     randogpg="/home/$user/.gnupg"
     #exporto el key del usuario recien creado
     sudo -u $currentUser gpg2 --export --armor --output $gnupgDir/$currentUser.asc 2>/dev/null

@@ -15,6 +15,8 @@ el usuario que administrará tendrá el nombre $user
 creara N usuarios 
 rando
 rando_1 ... rando N
+todos tienen el password rando
+
 
 ### deleteUsers.sh
 
