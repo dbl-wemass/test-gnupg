@@ -8,7 +8,6 @@ while :; do
   gnupgDir="$homeDir/.gnupg"
   reposdir="$homeDir/repos"
   useradd -m -d $homeDir -s /bin/bash "$currentUser" -p $(openssl passwd -1 rando)
-  sudo adduser ${currentUser} sudo
   mkdir -m 0700 $gnupgDir
   touch $gnupgDir/gpg.conf 
   chmod 600 $gnupgDir/gpg.conf
