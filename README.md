@@ -24,7 +24,7 @@ borrara el numero de usuarios indicados en config
 
 ### hazTests.sh
 
-
+Se encargará de hacer:
 * archivo encritptado con todas las claves
 * archivo encriptado con varias claves (1/3 claves)
 * archivo cifrado con AES256 (segun los comentarios de jose maria) para ver la diferencia del peso

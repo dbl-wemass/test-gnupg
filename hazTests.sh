@@ -34,7 +34,7 @@ comando="${comando} -o ${ARCHIVOVARIOS} ${ARCHIVOORIGINAL}"
 # echo ${comando}
 eval ${comando}
 echo "creando encriptacion simetrica"
-sudo -u $user time -p gpg -ca --cipher-algo AES256 --batch --pinentry-mode loopback --passphrase ${RANDOM} --output ${ARCHIVOSIMETRICO} ${ARCHIVOORIGINAL}
+sudo -u $user time -p gpg -ca --cipher-algo AES256 --batch --pinentry-mode loopback --passphrase randoCarlrissian --output ${ARCHIVOSIMETRICO} ${ARCHIVOORIGINAL}
 echo "comprimiendo en gzip"
 sudo -u $user gzip --best -fk ${ARCHIVOCONTROL} ${ARCHIVOORIGINAL} ${ARCHIVOTODOS} ${ARCHIVOVARIOS} ${ARCHIVOSIMETRICO}
 echo "comprimiendo en brotli"
