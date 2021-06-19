@@ -22,7 +22,7 @@ el usuario que administrará tendrá el nombre $user
 
 borrara el numero de usuarios indicados en config
 
-### hazTests.sh
+### creaKeys.sh
 
 Se encargará de hacer:
 * archivo encritptado con todas las claves
@@ -35,3 +35,21 @@ Se encargará de hacer:
 
 Se ha de pasar un parametro numerico que ha de ir desde 1 hasta NUMUSERS <1:
 * Se intentará desencriptar los diferentes archivos encriptados con las credenciales del usuario ${user}_${N}
+
+## prueba SSSS
+
+Parece prometedor 
+
+https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
+
+https://github.com/MrJoy/ssss
+
+Ya que se puede dividir la clave en N claves, con una necesidad de M claves para desencriptar. Se me antoja lento, pero podria ser la implementacion qhe he usado. Los binarios van en el repo
+
+### ssss-createkeys.sh
+
+Prueba super bruta de concepto, genera n*2 +1 claves asumiendo que solo se van a repartir n claves en entre los miembros y sin embargo se necesitan n+1 claves para desencriptar. 
+
+En una situacion muy mala, en la que todos los vendors se pusieran de acuerdo y compartieran sus claves, nunca iban a poder conseguir la cantidad n+1 minima para ver el id del usuario.
+
+Es lento para 200 miembros: un minuto por cada descifrado, pero el ejemplo es uno de maximos.
