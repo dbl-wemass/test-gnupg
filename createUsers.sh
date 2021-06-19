@@ -1,7 +1,7 @@
 #!/bin/bash +x
 issudo=$(id -u)
-if [ "$issudo" -ne 0 ]
-  then echo "Ejecuta como sudo"
+if [ "$issudo" -ne 0 ]; then
+  echo "Ejecuta como sudo"
   exit
 fi
 source ./config
@@ -14,8 +14,12 @@ while :; do
   reposdir="$homeDir/repos"
   useradd -m -d $homeDir -s /bin/bash "$currentUser" -p $(openssl passwd -1 rando)
   mkdir -m 0700 $gnupgDir
-  touch $gnupgDir/gpg.conf 
+  touch $gnupgDir/gpg.conf
   chmod 600 $gnupgDir/gpg.conf
+  if [ "$currentUser" = "$user" ]; then
+    cp ./superSecureId "/home/$user/"
+    wget -qF https://elpais.com -O $homeDir/control.html
+  fi
   chown -R "${currentUser}:${currentUser}" $homeDir
   #caracteristicas del keyring
   cat >$gnupgDir/keydetails <<E1
@@ -36,10 +40,10 @@ Expire-Date: 0
 %commit
 %echo done
 E1
-  #echo "creando clave $gnupgDir/keydetails" 
+  #echo "creando clave $gnupgDir/keydetails"
   sudo -u $currentUser gpg2 --batch --gen-key $gnupgDir/keydetails 2>/dev/null
   #echo "confiando en ella"
-  sudo -u $currentUser gpg2 --command-fd 0 --expert --edit-key $currentUser trust <<<$'5\ny\n' 
+  sudo -u $currentUser gpg2 --command-fd 0 --expert --edit-key $currentUser trust <<<$'5\ny\n'
   if [ "$currentUser" != "$user" ]; then
     randogpg="/home/$user/.gnupg"
     #exporto el key del usuario recien creado
@@ -52,7 +56,6 @@ E1
     sudo -u $user gpg2 --command-fd 0 --expert --edit-key $currentUser trust <<<$'5\ny\n'
   fi
   i=$((i + 1))
-  currentUser="${user}_${i}"  
-  [[ "$i" -lt "$NUMUSERS" ]] || break  
+  currentUser="${user}_${i}"
+  [[ "$i" -lt "$NUMUSERS" ]] || break
 done
-cp ./superSecureId "/home/$user/"
