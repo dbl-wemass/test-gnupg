@@ -30,3 +30,8 @@ Se encargará de hacer:
 * archivo cifrado con AES256 (segun los comentarios de jose maria) para ver la diferencia del peso
 * Comprimir los archivos con gzip para emular la compresion de servidor
 * comprimir los archivos con brotli para emular la compresion de servidor https://caniuse.com/brotli
+
+### decrypt.sh
+
+Se ha de pasar un parametro numerico que ha de ir desde 1 hasta NUMUSERS <1:
+* Se intentará desencriptar los diferentes archivos encriptados con las credenciales del usuario ${user}_${N}
